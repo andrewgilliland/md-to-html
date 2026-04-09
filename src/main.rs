@@ -166,5 +166,9 @@ fn main() {
         .expect("Could not read file");
 
     let html = convert(&markdown);
-    println!("{}", html);
+
+    fs::create_dir_all("dist").expect("Could not create dist directory");
+    fs::write("dist/index.html", &html).expect("Could not write dist/index.html");
+
+    println!("Written to dist/index.html");
 }
